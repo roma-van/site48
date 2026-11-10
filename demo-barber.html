@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Барбершоп «Бритва» — демо-сайт</title>
+<meta name="description" content="Чоловічі стрижки та гоління. Запис онлайн за 30 секунд.">
+<style>:root{--bg:#fff;--fg:#1d1d1f;--muted:#6b6b70;--card:#f5f5f7;--line:#e5e5ea}
+@media (prefers-color-scheme:dark){:root{--bg:#111113;--fg:#f2f2f4;--muted:#a0a0a8;--card:#1c1c1f;--line:#2c2c30}}
+*{box-sizing:border-box;margin:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--fg);line-height:1.55}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header.top{position:sticky;top:0;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:5}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.logo{font-weight:800;font-size:20px;text-decoration:none}
+.logo span{color:var(--accent)}
+nav a{text-decoration:none;color:var(--muted);margin-left:18px;font-size:15px}
+@media(max-width:640px){nav a:not(.btn){display:none}}
+.btn{display:inline-block;background:var(--accent);color:#fff!important;padding:12px 22px;border-radius:12px;text-decoration:none;font-weight:600;border:0;cursor:pointer;font-size:16px}
+.btn.ghost{background:transparent;color:var(--fg)!important;border:1.5px solid var(--line)}
+.hero{padding:72px 0 56px;background:radial-gradient(1200px 400px at 80% -10%,color-mix(in srgb,var(--accent) 22%,transparent),transparent)}
+.hero h1{font-size:clamp(32px,6vw,56px);line-height:1.08;letter-spacing:-.02em;max-width:760px}
+.hero p{font-size:19px;color:var(--muted);max-width:620px;margin:18px 0 28px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.badges{display:flex;gap:18px;flex-wrap:wrap;margin-top:28px;color:var(--muted);font-size:14px}
+section{padding:56px 0}
+h2{font-size:clamp(26px,4vw,36px);letter-spacing:-.01em;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:var(--card);border-radius:18px;padding:22px}
+.card h3{font-size:18px;margin-bottom:6px}
+.card p{color:var(--muted);font-size:15px}
+.price{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:12px 0;gap:12px}
+.price b{white-space:nowrap}
+.photo{aspect-ratio:4/3;border-radius:18px;background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 40%,#000));display:flex;align-items:flex-end;padding:16px;color:#fff;font-weight:600}
+.review{font-style:italic}
+.review small{display:block;font-style:normal;color:var(--muted);margin-top:8px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:720px){.contact{grid-template-columns:1fr}}
+.map{min-height:240px;border-radius:18px;background:var(--card);display:flex;align-items:center;justify-content:center;color:var(--muted)}
+form{display:grid;gap:10px}
+input,select,textarea{font:inherit;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--fg)}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:14px}
+.demo-note{background:var(--accent);color:#fff;text-align:center;font-size:13px;padding:6px 16px}
+.demo-note a{color:#fff}
+.float{position:fixed;right:16px;bottom:16px;width:56px;height:56px;border-radius:50%;background:#2aabee;color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+</style><style>:root{--accent:#c8752f}</style></head>
+<body>
+<div class="demo-note">Це демо-сайт для портфоліо. Хочете такий для свого бізнесу? <a href="index.html">Дізнатися більше →</a></div>
+<header class="top"><div class="wrap"><a class="logo" href="#">Бри<span>тва</span></a>
+<nav><a href="#prices">Ціни</a><a href="#masters">Майстри</a><a href="#contacts">Контакти</a><a class="btn" href="#book">Записатися</a></nav></div></header>
+<div class="hero"><div class="wrap">
+<h1>Стрижка, після якої хочеться повернутися</h1>
+<p>Чоловічі стрижки, борода та королівське гоління. Без черг — запис онлайн за 30 секунд, нагадаємо в Telegram.</p>
+<div class="cta"><a class="btn" href="#book">Записатися онлайн</a><a class="btn ghost" href="tel:+380000000000">📞 Подзвонити</a></div>
+<div class="badges"><span>⭐ 4.9 у Google (212 відгуків)</span><span>🕘 Щодня 9:00–21:00</span><span>📍 5 хв від метро</span></div>
+</div></div>
+<section id="prices"><div class="wrap"><h2>Ціни</h2>
+<div class="price"><span>Чоловіча стрижка</span><b>450 ₴</b></div>
+<div class="price"><span>Стрижка + борода</span><b>700 ₴</b></div>
+<div class="price"><span>Моделювання бороди</span><b>350 ₴</b></div>
+<div class="price"><span>Королівське гоління</span><b>500 ₴</b></div>
+<div class="price"><span>Дитяча стрижка (до 12 р.)</span><b>350 ₴</b></div>
+</div></section>
+<section id="masters"><div class="wrap"><h2>Майстри</h2>
+<div class="grid"><div><div class="photo">Олег · топ-барбер</div></div><div><div class="photo">Денис · барбер</div></div><div><div class="photo">Артем · барбер</div></div></div>
+</div></section>
+<section><div class="wrap"><h2>Відгуки</h2><div class="grid">
+<div class="card review">«Приклад відгуку: тут будуть реальні відгуки ваших клієнтів з Google.»<small>— Клієнт</small></div>
+<div class="card review">«Відгуки підтягуємо з Google Maps або Instagram — лише справжні.»<small>— Клієнт</small></div>
+</div></div></section>
+<section id="book"><div class="wrap contact" id="contacts">
+<div><h2>Запис</h2><form onsubmit="event.preventDefault();this.innerHTML='<p>✅ Дякуємо! Майстер підтвердить запис у Telegram протягом 10 хвилин.</p>'">
+<input required placeholder="Ваше ім'я"><input required type="tel" placeholder="Телефон"><select><option>Чоловіча стрижка</option><option>Стрижка + борода</option><option>Гоління</option></select><input type="datetime-local"><button class="btn">Записатися</button></form></div>
+<div><h2>Контакти</h2><p>вул. Прикладна, 10<br>+380 00 000 00 00<br>Щодня 9:00–21:00</p><br><div class="map">Тут буде Google-карта</div></div>
+</div></section>
+<footer><div class="wrap">© Барбершоп «Бритва» · демо</div></footer>
+<a class="float" href="https://t.me/wizzzar" title="Telegram">✈</a>
+</body></html>
