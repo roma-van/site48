@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QR-меню «Зерно» — демо</title>
+<meta name="description" content="Демо QR-меню для кафе: категорії, ціни, фото, мови, кнопка виклику офіціанта.">
+<style>
+:root{--bg:#faf7f2;--fg:#1f1b16;--muted:#7a7066;--card:#fff;--line:#ece5da;--accent:#2f7d5b}
+@media (prefers-color-scheme:dark){:root{--bg:#141210;--fg:#f3eee7;--muted:#a59b90;--card:#1e1b18;--line:#2e2a25}}
+*{box-sizing:border-box;margin:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--fg);line-height:1.45;max-width:560px;margin:0 auto}
+.demo-note{background:var(--accent);color:#fff;text-align:center;font-size:12px;padding:6px 12px}
+.demo-note a{color:#fff}
+header{padding:20px 16px 8px;display:flex;justify-content:space-between;align-items:center}
+h1{font-size:26px}
+.sub{color:var(--muted);font-size:14px;padding:0 16px}
+.lang{display:flex;gap:6px}
+.lang button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:8px;padding:4px 8px;cursor:pointer}
+.lang button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+nav{position:sticky;top:0;background:var(--bg);display:flex;gap:8px;overflow-x:auto;padding:12px 16px;border-bottom:1px solid var(--line);z-index:2}
+nav a{white-space:nowrap;text-decoration:none;color:var(--fg);background:var(--card);border:1px solid var(--line);padding:7px 14px;border-radius:99px;font-size:14px}
+section{padding:18px 16px 4px}
+h2{font-size:19px;margin-bottom:10px}
+.item{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;margin-bottom:10px}
+.ph{width:72px;height:72px;border-radius:10px;flex:none;background:linear-gradient(135deg,var(--c,#c8a27a),color-mix(in srgb,var(--c,#c8a27a) 45%,#000))}
+.item h3{font-size:16px}
+.item p{font-size:13px;color:var(--muted);margin:2px 0 6px}
+.item b{font-size:15px}
+.tag{font-size:11px;background:color-mix(in srgb,var(--accent) 15%,transparent);color:var(--accent);padding:2px 6px;border-radius:6px;margin-left:6px;font-weight:600}
+.call{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;background:var(--accent);color:#fff;border:0;border-radius:99px;padding:14px 26px;font:inherit;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);cursor:pointer}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:24px 16px 90px}
+</style></head>
+<body>
+<div class="demo-note">Демо QR-меню для портфоліо. Хочете таке для свого закладу? <a href="index.html">Детальніше →</a></div>
+<header><h1>Зерно</h1><div class="lang"><button class="on" data-l="uk">UA</button><button data-l="en">EN</button></div></header>
+<p class="sub" data-uk="Відскануйте — і замовляйте без очікування меню" data-en="Scan the code and order without waiting for a menu">Відскануйте — і замовляйте без очікування меню</p>
+<nav><a href="#coffee" data-uk="Кава" data-en="Coffee">Кава</a><a href="#breakfast" data-uk="Сніданки" data-en="Breakfast">Сніданки</a><a href="#bakery" data-uk="Випічка" data-en="Bakery">Випічка</a><a href="#cold" data-uk="Холодні напої" data-en="Cold drinks">Холодні напої</a></nav>
+<section id="coffee"><h2 data-uk="Кава" data-en="Coffee">Кава</h2>
+<div class="item"><div class="ph" style="--c:#6f4e37"></div><div><h3 data-uk="Капучино" data-en="Cappuccino">Капучино</h3><p data-uk="Еспресо, молоко, 250 мл" data-en="Espresso, milk, 250 ml">Еспресо, молоко, 250 мл</p><b>70 ₴</b></div></div>
+<div class="item"><div class="ph" style="--c:#8b5a2b"></div><div><h3 data-uk="Флет вайт" data-en="Flat white">Флет вайт</h3><p data-uk="Подвійний еспресо, 200 мл" data-en="Double espresso, 200 ml">Подвійний еспресо, 200 мл</p><b>80 ₴</b></div></div>
+<div class="item"><div class="ph" style="--c:#a0522d"></div><div><h3><span data-uk="Раф лавандовий" data-en="Lavender raf">Раф лавандовий</span><span class="tag">HIT</span></h3><p data-uk="Вершки, лавандовий сироп, 300 мл" data-en="Cream, lavender syrup, 300 ml">Вершки, лавандовий сироп, 300 мл</p><b>95 ₴</b></div></div>
+</section>
+<section id="breakfast"><h2 data-uk="Сніданки" data-en="Breakfast">Сніданки</h2>
+<div class="item"><div class="ph" style="--c:#e0a458"></div><div><h3 data-uk="Сирники" data-en="Syrnyky (cottage cheese pancakes)">Сирники</h3><p data-uk="Сметана, ягідний соус, 220 г" data-en="Sour cream, berry sauce, 220 g">Сметана, ягідний соус, 220 г</p><b>165 ₴</b></div></div>
+<div class="item"><div class="ph" style="--c:#d9b44a"></div><div><h3 data-uk="Яйця бенедикт" data-en="Eggs Benedict">Яйця бенедикт</h3><p data-uk="Бріош, бекон, голландез" data-en="Brioche, bacon, hollandaise">Бріош, бекон, голландез</p><b>195 ₴</b></div></div>
+</section>
+<section id="bakery"><h2 data-uk="Випічка" data-en="Bakery">Випічка</h2>
+<div class="item"><div class="ph" style="--c:#c68642"></div><div><h3 data-uk="Круасан" data-en="Croissant">Круасан</h3><p data-uk="Вершкове масло 82%" data-en="82% butter">Вершкове масло 82%</p><b>65 ₴</b></div></div>
+<div class="item"><div class="ph" style="--c:#b5651d"></div><div><h3 data-uk="Синабон" data-en="Cinnabon">Синабон</h3><p data-uk="Кориця, крем-чіз" data-en="Cinnamon, cream cheese">Кориця, крем-чіз</p><b>85 ₴</b></div></div>
+</section>
+<section id="cold"><h2 data-uk="Холодні напої" data-en="Cold drinks">Холодні напої</h2>
+<div class="item"><div class="ph" style="--c:#3a7ca5"></div><div><h3 data-uk="Айс латте" data-en="Iced latte">Айс латте</h3><p data-uk="350 мл" data-en="350 ml">350 мл</p><b>85 ₴</b></div></div>
+<div class="item"><div class="ph" style="--c:#e85d75"></div><div><h3 data-uk="Лимонад ягідний" data-en="Berry lemonade">Лимонад ягідний</h3><p data-uk="400 мл" data-en="400 ml">400 мл</p><b>75 ₴</b></div></div>
+</section>
+<footer data-uk="Ціни оновлюються власником за хвилину — без передруку меню" data-en="Prices are updated by the owner in a minute — no reprinting">Ціни оновлюються власником за хвилину — без передруку меню</footer>
+<button class="call" onclick="this.textContent=document.documentElement.lang==='en'?'✅ Waiter is coming':'✅ Офіціант вже йде'" data-uk="🔔 Покликати офіціанта" data-en="🔔 Call a waiter">🔔 Покликати офіціанта</button>
+<script>
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{const l=b.dataset.l;document.documentElement.lang=l;document.querySelectorAll('.lang button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('[data-'+l+']').forEach(e=>e.textContent=e.getAttribute('data-'+l));});
+</script>
+</body></html>
