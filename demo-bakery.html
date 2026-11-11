@@ -101,16 +101,35 @@ document.querySelectorAll(".rev").forEach(el=>io.observe(el));
 const f=document.getElementById("f");
 document.querySelectorAll("[data-svc]").forEach(a=>a.addEventListener("click",()=>{const s=f.querySelector("select[name=svc]");if(s)s.value=a.dataset.svc}));
 const days=document.getElementById("days");
+const API="",BIZ="demo-bakery";
+const FAKE=!API&&true; // у фінальному сайті не імітуємо зайнятість
+const iso=d=>d.toLocaleDateString("sv-SE");let BUSY={};
 if(days){const wd=["нд","пн","вт","ср","чт","пт","сб"],now=new Date(),T=["09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00"];
  const D=[...Array(8)].map((_,i)=>{const d=new Date(now);d.setDate(now.getDate()+i);return d});
+ if(API)fetch(API+"/api/busy?biz="+BIZ+"&from="+iso(D[0])+"&days=8").then(r=>r.json()).then(j=>{BUSY=j.busy||{};const on=days.querySelector(".day.on");if(on)on.click()}).catch(()=>{});
  days.innerHTML=D.map((d,i)=>`<button type="button" class="day" data-i="${i}">${i?wd[d.getDay()]:"сьог."}<b>${d.getDate()}</b></button>`).join("");
  const sl=document.getElementById("slots");let di=null;
  days.onclick=e=>{const b=e.target.closest(".day");if(!b)return;di=+b.dataset.i;days.querySelectorAll(".day").forEach(x=>x.classList.toggle("on",x===b));
-  sl.innerHTML=T.map(t=>{const busy=(di===0&&+t.slice(0,2)<=now.getHours())||((D[di].getDate()*7+ +t.slice(0,2)*3)%5===0);return`<button type="button" class="slot" ${busy?"disabled":""}>${t}</button>`}).join("");f.when.value=""};
- sl.onclick=e=>{const b=e.target.closest(".slot");if(!b||b.disabled)return;sl.querySelectorAll(".slot").forEach(x=>x.classList.toggle("on",x===b));f.when.value=D[di].toLocaleDateString("uk-UA")+" "+b.textContent};
+  sl.innerHTML=T.map(t=>{const busy=(di===0&&+t.slice(0,2)<=now.getHours())||(FAKE&&((D[di].getDate()*7+ +t.slice(0,2)*3)%5===0))||(BUSY[iso(D[di])]||[]).includes(t);return`<button type="button" class="slot" ${busy?"disabled":""}>${t}</button>`}).join("");f.when.value=""};
+ sl.onclick=e=>{const b=e.target.closest(".slot");if(!b||b.disabled)return;sl.querySelectorAll(".slot").forEach(x=>x.classList.toggle("on",x===b));f.when.value=D[di].toLocaleDateString("uk-UA")+" "+b.textContent;f.dataset.date=iso(D[di]);f.dataset.time=b.textContent};
  days.querySelectorAll(".day")[now.getHours()>=17?1:0].click()}
 f.addEventListener("submit",e=>{e.preventDefault();if(f.when&&!f.when.value){alert("Оберіть час");return}
  const fd=new FormData(f);
+ if(API&&f.dataset.date){
+  const btn=f.querySelector("button.btn");btn.disabled=true;btn.textContent="Надсилаємо…";
+  fetch(API+"/api/book",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({biz:BIZ,svc:fd.get("svc")||"",date:f.dataset.date,time:f.dataset.time,name:fd.get("name"),phone:fd.get("phone")})})
+  .then(r=>r.json().then(j=>[r.ok,j])).then(([ok,j])=>{
+   if(!ok){alert(j.error||"Не вдалося. Зателефонуйте нам.");btn.disabled=false;btn.textContent="Спробувати ще";if(j.error&&j.error.includes("зайняли")){BUSY[f.dataset.date]=(BUSY[f.dataset.date]||[]).concat(f.dataset.time);days.querySelector(".day.on").click()}return}
+   const det=[fd.get("svc"),fd.get("when"),fd.get("in")?("заїзд "+fd.get("in")+" → "+fd.get("out")):"",fd.get("guests")||"",fd.get("chan")?"+ чан":"",fd.get("msg")||""].filter(Boolean).join(", ");
+ const tg=document.createElement("div");tg.className="tg";tg.innerHTML='<div class="tg-h"><span class="tg-i">✈</span><b>Telegram</b><small>щойно</small></div><b class="tg-t">🔔 Нова заявка з сайту</b><p></p><div class="tg-c">↑ так заявка приходить власнику</div>';
+ tg.querySelector("p").textContent=(det?det+" · ":"")+"👤 "+fd.get("name")+" · 📞 "+fd.get("phone");
+ document.body.appendChild(tg);setTimeout(()=>tg.classList.add("on"),350);setTimeout(()=>tg.classList.remove("on"),9000);
+   const box=f.parentElement,when=f.when.value;
+   const show=(st)=>{box.innerHTML=st==="confirmed"?`<div class="ok"><b>✅ Запис підтверджено!</b>Чекаємо вас ${when}.</div>`:st==="rejected"?`<div class="ok"><b>Цей час, на жаль, не підійшов</b>Зателефонуйте або оберіть інший час.</div>`:`<div class="ok"><b>⏳ Заявку надіслано</b>Чекаємо підтвердження — зазвичай кілька хвилин. Можна не оновлювати сторінку.</div>`};
+   show(j.status);let n=0;
+   if(j.status==="pending"){const iv=setInterval(()=>{if(++n>36)return clearInterval(iv);fetch(API+"/api/status?id="+j.id).then(r=>r.json()).then(s=>{if(s.status!=="pending"){clearInterval(iv);show(s.status)}}).catch(()=>{})},5000)}
+  }).catch(()=>{alert("Немає зв'язку. Спробуйте ще раз або зателефонуйте.");btn.disabled=false;btn.textContent="Спробувати ще"});
+  return}
  const det=[fd.get("svc"),fd.get("when"),fd.get("in")?("заїзд "+fd.get("in")+" → "+fd.get("out")):"",fd.get("guests")||"",fd.get("chan")?"+ чан":"",fd.get("msg")||""].filter(Boolean).join(", ");
  const tg=document.createElement("div");tg.className="tg";tg.innerHTML='<div class="tg-h"><span class="tg-i">✈</span><b>Telegram</b><small>щойно</small></div><b class="tg-t">🔔 Нова заявка з сайту</b><p></p><div class="tg-c">↑ так заявка приходить власнику</div>';
  tg.querySelector("p").textContent=(det?det+" · ":"")+"👤 "+fd.get("name")+" · 📞 "+fd.get("phone");
