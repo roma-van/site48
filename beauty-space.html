@@ -58,7 +58,15 @@ footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-s
 <section><div class="wrap"><h2>Фото</h2><div class="grid"><div class="photo">Ваше фото</div><div class="photo">Ваше фото</div><div class="photo">Ваше фото</div></div></div></section>
 <section id="book"><div class="wrap contact" id="contacts">
 <div><h2>Записатися</h2><form onsubmit="event.preventDefault();this.innerHTML='<p>✅ Дякуємо! Ми зв\'яжемося з вами найближчим часом.</p>'">
-<input required placeholder="Ваше ім'я"><input required type="tel" placeholder="Телефон"><select><option>Жіноча стрижка</option><option>Фарбування</option><option>Складне фарбування</option><option>Догляд</option><option>Укладка</option></select><input type="datetime-local"><textarea rows="2" placeholder="Коментар"></textarea><button class="btn">Надіслати</button></form></div>
+<input required placeholder="Ваше ім'я"><input required type="tel" placeholder="Телефон"><select><option>Жіноча стрижка</option><option>Фарбування</option><option>Складне фарбування</option><option>Догляд</option><option>Укладка</option></select><input type="date" id="bd" title="Дата"><div id="slots" style="display:flex;flex-wrap:wrap;gap:8px"></div><input type="hidden" id="bt" required>
+<p style="font-size:13px;color:var(--muted)">Сірим — зайняті вікна. У фінальній версії вільний час береться з вашого розкладу.</p>
+<script>(function(){const box=document.getElementById('slots'),d=document.getElementById('bd'),h=document.getElementById('bt');
+const t=new Date();t.setDate(t.getDate()+1);d.value=t.toISOString().slice(0,10);
+function draw(){box.innerHTML='';const seed=+d.value.replace(/-/g,'');
+['09:00','10:30','12:00','13:30','15:00','16:30','18:00'].forEach((x,i)=>{const busy=(seed+i*7)%3===0;const b=document.createElement('button');b.type='button';b.textContent=x;
+b.style.cssText='padding:8px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);font:inherit;cursor:pointer'+(busy?';opacity:.35;text-decoration:line-through;cursor:not-allowed':'');
+b.disabled=busy;b.onclick=()=>{box.querySelectorAll('button').forEach(z=>{z.style.background='var(--bg)';z.style.color='var(--fg)'});b.style.background='var(--accent)';b.style.color='#fff';h.value=x};box.appendChild(b)});}
+d.addEventListener('change',draw);draw();})();</script><textarea rows="2" placeholder="Коментар"></textarea><button class="btn">Надіслати</button></form></div>
 <div><h2>Контакти</h2><p>вул. Миру, 11а/53, Мукачево<br><a href="tel:+380509677415">050 967 74 15</a><br><a href="https://instagram.com/valentyna.lomova.space">Instagram @valentyna.lomova.space</a></p><br>
 <iframe title="Карта" style="width:100%;min-height:240px;border:0;border-radius:18px" loading="lazy" src="https://maps.google.com/maps?q=Valentyna%20Lomova%20·%20простір%20краси%20вул.%20Миру,%2011а/53%20Мукачево&output=embed"></iframe></div>
 </div></section>
