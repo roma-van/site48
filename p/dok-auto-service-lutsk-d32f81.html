@@ -1,67 +1,110 @@
 <!doctype html>
 <html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
-<title>Dok Auto Service — чорновик сайту</title>
-<style>:root{--bg:#fff;--fg:#1d1d1f;--muted:#6b6b70;--card:#f5f5f7;--line:#e5e5ea}
-@media (prefers-color-scheme:dark){:root{--bg:#111113;--fg:#f2f2f4;--muted:#a0a0a8;--card:#1c1c1f;--line:#2c2c30}}
-*{box-sizing:border-box;margin:0}
-body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--fg);line-height:1.55}
-a{color:inherit}
-.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
-header.top{position:sticky;top:0;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:5}
-header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
-.logo{font-weight:800;font-size:20px;text-decoration:none}
-.logo span{color:var(--accent)}
-nav a{text-decoration:none;color:var(--muted);margin-left:18px;font-size:15px}
-@media(max-width:640px){nav a:not(.btn){display:none}}
-.btn{display:inline-block;background:var(--accent);color:#fff!important;padding:12px 22px;border-radius:12px;text-decoration:none;font-weight:600;border:0;cursor:pointer;font-size:16px}
-.btn.ghost{background:transparent;color:var(--fg)!important;border:1.5px solid var(--line)}
-.hero{padding:72px 0 56px;background:radial-gradient(1200px 400px at 80% -10%,color-mix(in srgb,var(--accent) 22%,transparent),transparent)}
-.hero h1{font-size:clamp(32px,6vw,56px);line-height:1.08;letter-spacing:-.02em;max-width:760px}
-.hero p{font-size:19px;color:var(--muted);max-width:620px;margin:18px 0 28px}
-.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
-.badges{display:flex;gap:18px;flex-wrap:wrap;margin-top:28px;color:var(--muted);font-size:14px}
-section{padding:56px 0}
-h2{font-size:clamp(26px,4vw,36px);letter-spacing:-.01em;margin-bottom:24px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.card{background:var(--card);border-radius:18px;padding:22px}
-.card h3{font-size:18px;margin-bottom:6px}
-.card p{color:var(--muted);font-size:15px}
-.price{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:12px 0;gap:12px}
-.price b{white-space:nowrap}
-.photo{aspect-ratio:4/3;border-radius:18px;background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 40%,#000));display:flex;align-items:flex-end;padding:16px;color:#fff;font-weight:600}
-.review{font-style:italic}
-.review small{display:block;font-style:normal;color:var(--muted);margin-top:8px}
-.contact{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-@media(max-width:720px){.contact{grid-template-columns:1fr}}
-.map{min-height:240px;border-radius:18px;background:var(--card);display:flex;align-items:center;justify-content:center;color:var(--muted)}
-form{display:grid;gap:10px}
-input,select,textarea{font:inherit;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--fg)}
-footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:14px}
-.demo-note{background:var(--accent);color:#fff;text-align:center;font-size:13px;padding:6px 16px}
-.demo-note a{color:#fff}
-.float{position:fixed;right:16px;bottom:16px;width:56px;height:56px;border-radius:50%;background:#2aabee;color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.25)}
-</style><style>:root{--accent:#1e6fa8}.logo{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55vw}.tag{display:inline-block;font-size:13px;padding:4px 10px;border-radius:99px;background:var(--card);color:var(--muted);margin-bottom:14px}</style></head>
+<meta name="robots" content="noindex,nofollow"><title>Dok Auto Service — Луцьк</title>
+<meta name="description" content="Автомайстерня в Луцьку з рейтингом 4.9 за 116 відгуками. Діагностика, ремонт ходової та двигуна, ТО. Запишіться заздалегідь — без черги.">
+<meta property="og:title" content="Dok Auto Service"><meta property="og:image" content="../img/stock/repair/0.jpg">
+<meta name="theme-color" content="#1e6fa8">
+<style>
+:root{--a:#1e6fa8;--bg:#fff;--fg:#17171a;--mu:#66666e;--card:#f6f5f3;--line:#e8e6e1}
+@media(prefers-color-scheme:dark){:root{--bg:#111113;--fg:#f3f3f5;--mu:#a3a3ab;--card:#1b1b1f;--line:#2b2b31}}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--fg);line-height:1.55;padding-bottom:72px}
+a{color:inherit}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.demo-note{background:#111;color:#fff;text-align:center;font-size:12.5px;padding:7px 16px}
+header{position:sticky;top:0;z-index:9;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.logo{font-weight:800;font-size:19px;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55vw}
+nav a{text-decoration:none;color:var(--mu);margin-left:20px;font-size:15px}@media(max-width:720px){nav{display:none}}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--a);color:#fff!important;padding:13px 22px;border-radius:12px;text-decoration:none;font-weight:650;border:0;cursor:pointer;font-size:16px;font-family:inherit}
+.btn.ghost{background:transparent;color:inherit!important;border:1.5px solid currentColor}
+.hero{position:relative;min-height:min(88vh,720px);display:flex;align-items:flex-end;color:#fff;background:#222 url("../img/stock/repair/0.jpg") center/cover}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.35) 40%,rgba(0,0,0,.82) 100%)}
+.hero .wrap{position:relative;padding-top:120px;padding-bottom:48px;width:100%}
+.chip{display:inline-block;font-size:13px;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.16);backdrop-filter:blur(6px);margin-bottom:16px}
+.hero h1{overflow-wrap:anywhere;font-size:clamp(32px,6.5vw,64px);line-height:1.05;letter-spacing:-.02em;max-width:820px}
+.hero p{font-size:clamp(17px,2.2vw,20px);opacity:.9;max-width:620px;margin:16px 0 26px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}.hero .btn.ghost{color:#fff!important}
+.trust{display:flex;gap:22px;flex-wrap:wrap;margin-top:26px;font-size:14px;opacity:.92}
+section{padding:64px 0}h2{font-size:clamp(27px,4.2vw,40px);letter-spacing:-.015em;margin-bottom:8px}
+.lead{color:var(--mu);margin-bottom:28px;font-size:17px}
+.svcs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.svc{display:flex;justify-content:space-between;gap:16px;background:var(--card);border-radius:16px;padding:18px 20px;align-items:center}
+.svc h3{font-size:17px}.svc p{color:var(--mu);font-size:14px;margin-top:2px}
+.svc-r{text-align:right;white-space:nowrap}.svc-r b{display:block;font-size:17px}.svc-r a{font-size:13.5px;color:var(--a);text-decoration:none;font-weight:600}
+.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.perk{border:1px solid var(--line);border-radius:18px;padding:22px}.perk span{font-size:26px;display:inline-flex;width:52px;height:52px;align-items:center;justify-content:center;border-radius:14px;background:color-mix(in srgb,var(--a) 14%,transparent);margin-bottom:12px}
+.perk h3{font-size:18px;margin-bottom:4px}.perk p{color:var(--mu);font-size:15px}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.gal img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;display:block}
+.gal img:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;height:100%}
+@media(max-width:640px){.gal img:nth-child(6){display:none}.gal{grid-template-columns:1fr 1fr}.gal img:first-child{grid-column:span 2;grid-row:auto;aspect-ratio:16/10}}
+.cap{color:var(--mu);font-size:13px;margin-top:10px}
+.book{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}.book>*{min-width:0}@media(max-width:820px){.book{grid-template-columns:1fr}}
+.panel{background:var(--card);border-radius:20px;padding:22px}
+form{display:grid;gap:12px}input,select,textarea{font:inherit;width:100%;padding:13px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--fg)}
+label{font-size:13px;color:var(--mu);display:grid;gap:4px}.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chk{display:flex;gap:8px;align-items:center;font-size:15px;color:var(--fg)}.chk input{width:auto}
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.day,.slot{border:1.5px solid var(--line);background:var(--bg);color:inherit;border-radius:12px;padding:9px 12px;font:inherit;cursor:pointer;flex:0 0 auto;text-align:center;font-size:14px}
+.day b{display:block;font-size:18px}.day.on,.slot.on{background:var(--a);border-color:var(--a);color:#fff}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.slot:disabled{opacity:.35;text-decoration:line-through;cursor:default}
+.ok{padding:24px;text-align:center}.ok b{font-size:20px;display:block;margin-bottom:6px}
+.reviews{padding:0}.rv{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:var(--card);border-radius:20px;padding:24px}.rv b{font-size:24px}.rv p{color:var(--mu)}
+details{border-bottom:1px solid var(--line);padding:16px 0}summary{cursor:pointer;font-weight:600;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary:after{content:"+";color:var(--a);font-size:22px;line-height:1}details[open] summary:after{content:"–"}details p{color:var(--mu);margin-top:8px}
+.cont a{display:block;padding:10px 0;text-decoration:none;border-bottom:1px dashed var(--line)}
+iframe{width:100%;min-height:300px;border:0;border-radius:18px}
+footer{border-top:1px solid var(--line);padding:26px 0 30px;color:var(--mu);font-size:14px}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+.bar a{flex:0 0 64px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;font-size:20px;border-radius:12px;border:1px solid var(--line)}.bar small{font-size:10.5px;color:var(--mu)}
+.bar a.main{flex:1;background:var(--a);color:#fff;font-size:16px;font-weight:650;border:0;padding:13px}
+@media(min-width:900px){.bar{display:none}body{padding-bottom:0}}
+.rev{opacity:0;transform:translateY(18px);transition:.6s ease}.rev.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}}
+</style></head>
 <body>
-<div class="demo-note">Швидкий чорновик від Роми (Сайт48), не готовий сайт · у фінальній версії — ваші логотип, фото, кольори й тексти</div>
-<header class="top"><div class="wrap"><a class="logo" href="#">Dok Auto Service</a>
-<nav><a href="#prices">Ціни на ремонт</a><a href="#contacts">Контакти</a><a class="btn" href="#book">Залишити заявку</a></nav></div></header>
+<div class="demo-note">Швидкий чорновик від Роми (Сайт48) · фото — приклади, у фінальній версії ваші логотип, фото, ціни й тексти</div>
+<header><div class="wrap"><a class="logo" href="#">Dok Auto Service</a>
+<nav><a href="#prices">Послуги та ціни</a><a href="#gallery">Фото</a><a href="#contacts">Контакти</a><a class="btn" href="#book">Записатися на ремонт</a></nav></div></header>
 <div class="hero"><div class="wrap">
-<span class="tag">Луцьк · вул. Підгаєцька, 3</span>
+<span class="chip">Луцьк · вул. Підгаєцька, 3</span>
 <h1>Dok Auto Service — автосервіс у Луцьку</h1>
 <p>Автомайстерня в Луцьку з рейтингом 4.9 за 116 відгуками. Діагностика, ремонт ходової та двигуна, ТО. Запишіться заздалегідь — без черги.</p>
-<div class="cta"><a class="btn" href="#book">Залишити заявку</a><a class="btn ghost" href="tel:+380684401328">📞 068 440 1328</a></div>
-<div class="badges"><span>⭐ 4.9 (116 відгуків) у Google</span><span>📍 вул. Підгаєцька, 3</span></div>
+<div class="cta"><a class="btn" href="#book">Записатися на ремонт</a><a class="btn ghost" href="#prices">Послуги та ціни</a></div>
+<div class="trust"><span>⭐ 4.9 (116 відгуків) у Google</span><span>⚡ Відповідаємо протягом години</span></div>
 </div></div>
-<section id="prices"><div class="wrap"><h2>Ціни на ремонт</h2><div class="price"><span>Діагностика</span><b>— ₴</b></div><div class="price"><span>Технічне обслуговування</span><b>— ₴</b></div><div class="price"><span>Ремонт ходової</span><b>— ₴</b></div><div class="price"><span>Ремонт двигуна</span><b>— ₴</b></div><div class="price"><span>Гальма</span><b>— ₴</b></div><div class="price"><span>Запис на зручний час</span><b>0 ₴</b></div>
-<p style="margin-top:14px;color:var(--muted);font-size:14px">У чорновику ціни приблизні або приховані — підставимо ваші актуальні.</p></div></section>
-<section><div class="wrap"><h2>Фото</h2><div class="grid"><div class="photo">Ваше фото</div><div class="photo">Ваше фото</div><div class="photo">Ваше фото</div></div></div></section>
-<section id="book"><div class="wrap contact" id="contacts">
-<div><h2>Залишити заявку</h2><form onsubmit="event.preventDefault();this.innerHTML='<p>✅ Дякуємо! Ми зв\'яжемося з вами найближчим часом.</p>'">
-<input required placeholder="Ваше ім'я"><input required type="tel" placeholder="Телефон"><textarea rows="3" placeholder="Коментар"></textarea><button class="btn">Надіслати</button></form></div>
-<div><h2>Контакти</h2><p>вул. Підгаєцька, 3, Луцьк<br><a href="tel:+380684401328">068 440 1328</a></p><br>
-<iframe title="Карта" style="width:100%;min-height:240px;border:0;border-radius:18px" loading="lazy" src="https://maps.google.com/maps?q=Dok%20Auto%20Service%20вул.%20Підгаєцька,%203%20Луцьк&output=embed"></iframe></div>
+<section id="prices"><div class="wrap rev"><h2>Послуги та ціни</h2><p class="lead">Оберіть, що потрібно — і запишіться онлайн за хвилину.</p><div class="svcs"><div class="svc"><div><h3>Діагностика</h3></div><div class="svc-r"><b>ціну уточнимо</b><a href="#book" data-svc="Діагностика">Записатися →</a></div></div><div class="svc"><div><h3>Технічне обслуговування</h3></div><div class="svc-r"><b>ціну уточнимо</b><a href="#book" data-svc="Технічне обслуговування">Записатися →</a></div></div><div class="svc"><div><h3>Ремонт ходової</h3></div><div class="svc-r"><b>ціну уточнимо</b><a href="#book" data-svc="Ремонт ходової">Записатися →</a></div></div><div class="svc"><div><h3>Ремонт двигуна</h3></div><div class="svc-r"><b>ціну уточнимо</b><a href="#book" data-svc="Ремонт двигуна">Записатися →</a></div></div><div class="svc"><div><h3>Гальма</h3></div><div class="svc-r"><b>ціну уточнимо</b><a href="#book" data-svc="Гальма">Записатися →</a></div></div><div class="svc"><div><h3>Запис на зручний час</h3></div><div class="svc-r"><b>безкоштовно</b><a href="#book" data-svc="Запис на зручний час">Записатися →</a></div></div></div></div></section>
+<section style="padding-top:0"><div class="wrap rev"><h2>Чому обирають нас</h2><p class="lead">Dok Auto Service — Луцьк</p><div class="perks"><div class="perk"><span>🔧</span><h3>Діагностика</h3><p>Чесно скажемо, що треба ремонтувати, а що ні.</p></div><div class="perk"><span>🛡</span><h3>Гарантія на роботу</h3><p>Запчастини й роботу — з гарантією.</p></div><div class="perk"><span>📅</span><h3>Запис на зручний час</h3><p>Без черги — приїжджаєте у свій слот.</p></div></div></div></section>
+<section id="gallery" style="padding-top:0"><div class="wrap rev"><h2>Фото</h2><div class="gal"><img src="../img/stock/repair/1.jpg" alt="Dok Auto Service — фото" loading="lazy"><img src="../img/stock/repair/2.jpg" alt="Dok Auto Service — фото" loading="lazy"><img src="../img/stock/repair/3.jpg" alt="Dok Auto Service — фото" loading="lazy"><img src="../img/stock/repair/4.jpg" alt="Dok Auto Service — фото" loading="lazy"><img src="../img/stock/repair/5.jpg" alt="Dok Auto Service — фото" loading="lazy"><img src="../img/stock/repair/6.jpg" alt="Dok Auto Service — фото" loading="lazy"></div><p class="cap">Фото-приклади — у фінальній версії тут будуть ваші роботи та інтер'єр.</p></div></section>
+<section class="reviews"><div class="wrap"><div class="rv"><div><b>⭐ 4.9 (116 відгуків)</b><p>Реальні відгуки клієнтів у Google</p></div><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Dok+Auto+Service+вул.+Підгаєцька,+3+Луцьк">Читати відгуки</a></div></div></section>
+<section id="book"><div class="wrap book rev">
+<div><h2>Записатися на ремонт</h2><p class="lead">Залиште заявку — підтвердимо час у повідомленні. Без передоплати й дзвінків.</p>
+<div class="panel"><form id="f"><select name="svc" required><option value="">Оберіть послугу</option><option>Діагностика</option><option>Технічне обслуговування</option><option>Ремонт ходової</option><option>Ремонт двигуна</option><option>Гальма</option><option>Запис на зручний час</option></select>
+<div class="days" id="days"></div><div class="slots" id="slots"></div><input type="hidden" name="when" required>
+<input name="name" required placeholder="Ваше ім'я" autocomplete="name"><input name="phone" required type="tel" placeholder="Телефон" autocomplete="tel">
+<button class="btn" style="justify-content:center">Записатися на ремонт</button></form></div></div>
+<div><h2>Питання</h2><p class="lead">Коротко про головне</p><details><summary>Скільки коштує діагностика?</summary><p>Залежить від авто — уточніть у записі, порахуємо заздалегідь.</p></details><details><summary>Чи можна зі своїми запчастинами?</summary><p>Так, обговорюється.</p></details><details><summary>Скільки триває ремонт?</summary><p>Більшість робіт — в день звернення.</p></details></div>
 </div></section>
-<footer><div class="wrap">Чорновик для Dok Auto Service · зроблено Рома, Сайт48 · <a href="https://t.me/wizzzar">@wizzzar</a></div></footer>
-<a class="float" href="#book" title="Залишити заявку">🔧</a>
+<section id="contacts" style="padding-top:0"><div class="wrap book rev">
+<div class="cont"><h2>Контакти</h2><p class=lead>Пишіть або телефонуйте — відповімо.</p><a href="tel:+380684401328">📞 068 440 1328</a><a href="https://www.google.com/maps/search/?api=1&query=Dok+Auto+Service+вул.+Підгаєцька,+3+Луцьк">📍 вул. Підгаєцька, 3, Луцьк</a></div>
+<iframe title="Карта" loading="lazy" src="https://maps.google.com/maps?q=Dok+Auto+Service+вул.+Підгаєцька,+3+Луцьк&output=embed"></iframe>
+</div></section>
+<footer><div class="wrap">© Dok Auto Service · Луцьк · сайт зроблено в <a href="https://roma-van.github.io/site48/">Сайт48</a></div></footer>
+<div class="bar"><a href="tel:+380684401328">📞<small>Дзвінок</small></a><a class="main" href="#book">Записатися на ремонт</a><a href="https://www.google.com/maps/search/?api=1&query=Dok+Auto+Service+вул.+Підгаєцька,+3+Луцьк">📍<small>Карта</small></a></div>
+<script>
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.08});
+document.querySelectorAll(".rev").forEach(el=>io.observe(el));
+const f=document.getElementById("f");
+document.querySelectorAll("[data-svc]").forEach(a=>a.addEventListener("click",()=>{const s=f.querySelector("select[name=svc]");if(s)s.value=a.dataset.svc}));
+const days=document.getElementById("days");
+if(days){const wd=["нд","пн","вт","ср","чт","пт","сб"],now=new Date(),T=["09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00"];
+ const D=[...Array(8)].map((_,i)=>{const d=new Date(now);d.setDate(now.getDate()+i);return d});
+ days.innerHTML=D.map((d,i)=>`<button type="button" class="day" data-i="${i}">${i?wd[d.getDay()]:"сьог."}<b>${d.getDate()}</b></button>`).join("");
+ const sl=document.getElementById("slots");let di=null;
+ days.onclick=e=>{const b=e.target.closest(".day");if(!b)return;di=+b.dataset.i;days.querySelectorAll(".day").forEach(x=>x.classList.toggle("on",x===b));
+  sl.innerHTML=T.map(t=>{const busy=(di===0&&+t.slice(0,2)<=now.getHours())||((D[di].getDate()*7+ +t.slice(0,2)*3)%5===0);return`<button type="button" class="slot" ${busy?"disabled":""}>${t}</button>`}).join("");f.when.value=""};
+ sl.onclick=e=>{const b=e.target.closest(".slot");if(!b||b.disabled)return;sl.querySelectorAll(".slot").forEach(x=>x.classList.toggle("on",x===b));f.when.value=D[di].toLocaleDateString("uk-UA")+" "+b.textContent};
+ days.querySelectorAll(".day")[now.getHours()>=17?1:0].click()}
+f.addEventListener("submit",e=>{e.preventDefault();if(f.when&&!f.when.value){alert("Оберіть час");return}
+ f.parentElement.innerHTML='<div class="ok"><b>✅ Заявку надіслано!</b>Ми напишемо вам найближчим часом.<br><small style=\"color:var(--mu)\">У готовому сайті заявка одразу приходить власнику в Telegram.</small></div>'});
+</script>
 </body></html>
