@@ -57,8 +57,22 @@ footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-s
 <p style="margin-top:14px;color:var(--muted);font-size:14px">У чорновику ціни приблизні або приховані — підставимо ваші актуальні.</p></div></section>
 <section><div class="wrap"><h2>Фото</h2><div class="grid"><div class="photo">Ваше фото</div><div class="photo">Ваше фото</div><div class="photo">Ваше фото</div></div></div></section>
 <section id="book"><div class="wrap contact" id="contacts">
-<div><h2>Замовити торт</h2><form onsubmit="event.preventDefault();this.innerHTML='<p>✅ Дякуємо! Ми зв\'яжемося з вами найближчим часом.</p>'">
-<input required placeholder="Ваше ім'я"><input required type="tel" placeholder="Телефон"><input type="date" title="Дата"><input placeholder="Вага, кг (напр. 2)"><textarea rows="3" placeholder="Побажання: начинка, напис, декор"></textarea><button class="btn">Надіслати</button></form></div>
+<div><h2>Замовити торт</h2>
+<p style="color:var(--muted);font-size:14px;margin-bottom:10px">Оберіть торт і вагу — ціна порахується одразу. Ціни в чорновику для прикладу, підставимо ваші.</p>
+<form id="cake" onsubmit="event.preventDefault();this.innerHTML='<p>✅ Дякуємо! Замовлення прийнято, ми зв'яжемося з вами для підтвердження.</p>'">
+<select id="ctype"><option value="650">Класичний (бісквіт, крем) — 650 ₴/кг</option><option value="750">Муссовий — 750 ₴/кг</option><option value="700">Дитячий — 700 ₴/кг</option><option value="850">Весільний — 850 ₴/кг</option></select>
+<label style="font-size:14px">Вага: <b id="wv">2</b> кг (≈ <span id="pp">16</span> порцій)</label>
+<input id="w" type="range" min="1" max="8" step="0.5" value="2" style="padding:0">
+<label style="font-size:14px"><input type="checkbox" class="ex" value="150"> Їстівне фото / напис (+150 ₴)</label>
+<label style="font-size:14px"><input type="checkbox" class="ex" value="300"> Фігурки з мастики (+300 ₴)</label>
+<label style="font-size:14px"><input type="checkbox" class="ex" value="120"> Свіжі ягоди (+120 ₴)</label>
+<div class="card" style="display:flex;justify-content:space-between;align-items:center;padding:14px 18px"><span>Орієнтовна ціна</span><b id="total" style="font-size:24px">1 300 ₴</b></div>
+<input required placeholder="Ваше ім'я"><input required type="tel" placeholder="Телефон"><input type="date" title="Дата"><textarea rows="2" placeholder="Побажання: начинка, напис, декор"></textarea><button class="btn">Замовити</button></form>
+<script>(function(){const f=document.getElementById('cake'),t=document.getElementById('ctype'),w=document.getElementById('w');
+function u(){const kg=+w.value;let sum=+t.value*kg;f.querySelectorAll('.ex:checked').forEach(e=>sum+=+e.value);
+document.getElementById('wv').textContent=kg;document.getElementById('pp').textContent=Math.round(kg*8);
+document.getElementById('total').textContent=Math.round(sum).toLocaleString('uk-UA')+' ₴';}
+f.addEventListener('input',u);u();})();</script></div>
 <div><h2>Контакти</h2><p>Латоричний двір, Мукачево<br><a href="tel:+380313132283">0313 13 22 83</a><br><a href="https://instagram.com/bondarenko_kd">Instagram @bondarenko_kd</a></p><br>
 <iframe title="Карта" style="width:100%;min-height:240px;border:0;border-radius:18px" loading="lazy" src="https://maps.google.com/maps?q=BONDARENKO%20Латоричний%20двір%20Мукачево&output=embed"></iframe></div>
 </div></section>
