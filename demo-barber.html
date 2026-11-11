@@ -102,7 +102,7 @@ document.querySelectorAll(".rev").forEach(el=>io.observe(el));
 const f=document.getElementById("f");
 document.querySelectorAll("[data-svc]").forEach(a=>a.addEventListener("click",()=>{const s=f.querySelector("select[name=svc]");if(s)s.value=a.dataset.svc}));
 const days=document.getElementById("days");
-const API="",BIZ="demo-barber";
+const API="https://site48-booking.site48-a3bb99.workers.dev",BIZ="demo-barber";
 const FAKE=!API&&true; // у фінальному сайті не імітуємо зайнятість
 const iso=d=>d.toLocaleDateString("sv-SE");let BUSY={};
 if(days){const wd=["нд","пн","вт","ср","чт","пт","сб"],now=new Date(),T=["09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00"];
