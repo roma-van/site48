@@ -21,7 +21,7 @@ header{position:sticky;top:0;z-index:9;background:color-mix(in srgb,var(--bg) 85
 header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
 .logo{font-weight:800;font-size:19px;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55vw}
 nav a{text-decoration:none;color:var(--mu);margin-left:20px;font-size:15px}@media(max-width:720px){nav{display:none}}
-.btn{display:inline-flex;align-items:center;gap:8px;background:var(--a);color:#fff!important;padding:13px 22px;border-radius:12px;text-decoration:none;font-weight:650;border:0;cursor:pointer;font-size:16px;font-family:inherit}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--a);color:#111!important;padding:13px 22px;border-radius:12px;text-decoration:none;font-weight:650;border:0;cursor:pointer;font-size:16px;font-family:inherit}
 .btn.ghost{background:transparent;color:inherit!important;border:1.5px solid currentColor}
 .hero{position:relative;min-height:min(88vh,720px);display:flex;align-items:flex-end;color:#fff;background:#222 url("../../img/stock/barber/0.jpg") center/cover}
 .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.35) 40%,rgba(0,0,0,.82) 100%)}
@@ -64,7 +64,7 @@ iframe{width:100%;min-height:300px;border:0;border-radius:18px}
 footer{border-top:1px solid var(--line);padding:26px 0 30px;color:var(--mu);font-size:14px}
 .bar{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
 .bar a{flex:0 0 64px;display:flex;flex-direction:column;gap:2px;align-items:center;justify-content:center;text-decoration:none;font-size:20px;border-radius:12px;border:1px solid var(--line)}.bar small{font-size:10.5px;color:var(--mu)}
-.bar a.main{flex:1;background:var(--a);color:#fff;font-size:16px;font-weight:650;border:0;padding:13px}
+.bar a.main{flex:1;background:var(--a);color:#111;font-size:16px;font-weight:650;border:0;padding:13px}
 @media(min-width:900px){.bar{display:none}body{padding-bottom:0}}
 .qs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:16px}
 .q{border-top:1px solid var(--line);padding:18px 0 0}.stars{color:#e8a317;letter-spacing:2px}.q blockquote{margin:8px 0 10px;font-size:16px}.q figcaption{color:var(--mu);font-size:14px}
@@ -122,16 +122,16 @@ f.addEventListener("submit",e=>{e.preventDefault();if(f.when&&!f.when.value){ale
   const btn=f.querySelector("button.btn");btn.disabled=true;btn.textContent="Надсилаємо…";
   fetch(API+"/api/book",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({biz:BIZ,svc:(fd.get("svc")||"")+(fd.get("master")?" · майстер: "+fd.get("master"):""),date:f.dataset.date,time:f.dataset.time,name:fd.get("name"),phone:fd.get("phone")})})
   .then(r=>r.json().then(j=>[r.ok,j])).then(([ok,j])=>{
-   if(!ok){alert(j.error||"Не вдалося. Зателефонуйте нам.");btn.disabled=false;btn.textContent="Спробувати ще";if(j.error&&j.error.includes("зайняли")){BUSY[f.dataset.date]=(BUSY[f.dataset.date]||[]).concat(f.dataset.time);days.querySelector(".day.on").click()}return}
+   if(!ok){alert(j.error||"Не вдалося. Спробуйте ще раз або оберіть інший час.");btn.disabled=false;btn.textContent="Спробувати ще";if(j.error&&j.error.includes("зайняли")){BUSY[f.dataset.date]=(BUSY[f.dataset.date]||[]).concat(f.dataset.time);days.querySelector(".day.on").click()}return}
    
    const box=f.parentElement,when=f.when.value;
-   const show=(st)=>{box.innerHTML=st==="confirmed"?`<div class="ok"><b>✅ Запис підтверджено!</b>Чекаємо вас ${when}.</div>`:st==="rejected"?`<div class="ok"><b>Цей час, на жаль, не підійшов</b>Зателефонуйте або оберіть інший час.</div>`:`<div class="ok"><b>⏳ Заявку надіслано</b>Чекаємо підтвердження, зазвичай кілька хвилин. Можна не оновлювати сторінку.</div>`};
+   const show=(st)=>{box.innerHTML=st==="confirmed"?`<div class="ok"><b>Запис підтверджено!</b>Чекаємо вас ${when}.</div>`:st==="rejected"?`<div class="ok"><b>Цей час, на жаль, не підійшов</b>Спробуйте ще раз або оберіть інший час.</div>`:`<div class="ok"><b>Заявку надіслано</b>Чекаємо підтвердження, зазвичай кілька хвилин. Можна не оновлювати сторінку.</div>`};
    show(j.status);let n=0;
    if(j.status==="pending"){const iv=setInterval(()=>{if(++n>36)return clearInterval(iv);fetch(API+"/api/status?id="+j.id).then(r=>r.json()).then(s=>{if(s.status!=="pending"){clearInterval(iv);show(s.status)}}).catch(()=>{})},5000)}
-  }).catch(()=>{alert("Немає зв'язку. Спробуйте ще раз або зателефонуйте.");btn.disabled=false;btn.textContent="Спробувати ще"});
+  }).catch(()=>{alert("Немає зв'язку. Спробуйте ще раз.");btn.disabled=false;btn.textContent="Спробувати ще"});
   return}
  
- f.parentElement.innerHTML='<div class="ok"><b>✅ Заявку надіслано!</b>Ми напишемо вам найближчим часом.</div>'});
+ f.parentElement.innerHTML='<div class="ok"><b>Заявку надіслано!</b>Ми напишемо вам найближчим часом.</div>'});
 </script>
 <script>/*s48v*/(function(){try{if(/[?&#]nv\b/.test(location.href)||localStorage.getItem("s48me"))return}catch(e){}fetch("https://site48-booking.site48-a3bb99.workers.dev/h?d=index",{mode:"no-cors",keepalive:true}).catch(function(){})})()</script>
 </body></html>
